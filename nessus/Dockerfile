@@ -3,15 +3,15 @@ RUN apt-get update
 
 # installs ping, netstat for debugging purposes
 # installing tzdata will fix NESSUS_TZ_DIR related warning
-RUN apt-get install -y net-tools iputils-ping tzdata
+RUN apt-get install -y net-tools iputils-ping tzdata wget
 
 RUN rm -rf /var/lib/apt/lists/*
 
-COPY Nessus.deb /tmp/Nessus.deb
+RUN wget https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/10703/download?i_agree_to_tenable_license_agreement=true -O /tmp/Nessus.deb
 
 RUN dpkg -i /tmp/Nessus.deb
 
-# defaut Nessus Scanner port
+# defaut Nessus Scanner port (https)
 EXPOSE 8834
 
 ENTRYPOINT [ "/opt/nessus/sbin/nessusd" ]

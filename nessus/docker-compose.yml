@@ -1,0 +1,8 @@
+version: '3'
+services:
+  nessus:
+    build: .
+    container_name: nessus
+    restart: unless-stopped
+    ports:
+      - 8834:8834
