@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM debian:stable
 RUN apt-get update 
 
 # installs ping, netstat for debugging purposes
