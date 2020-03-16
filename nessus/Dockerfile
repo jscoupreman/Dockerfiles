@@ -11,6 +11,8 @@ RUN wget https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/
 
 RUN dpkg -i /tmp/Nessus.deb
 
+RUN rm /tmp/Nessus.deb
+
 # defaut Nessus Scanner port (https)
 EXPOSE 8834
 
