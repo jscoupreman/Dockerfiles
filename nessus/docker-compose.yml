@@ -6,3 +6,4 @@ services:
     restart: unless-stopped
     ports:
       - 8834:8834
+    image: jscoupreman/nessus

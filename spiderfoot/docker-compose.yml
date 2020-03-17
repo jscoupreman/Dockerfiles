@@ -1,0 +1,15 @@
+version: '3'
+
+networks:
+  spiderfoot_local:
+
+services:
+  spiderfoot:
+    build: .
+    container_name: spiderfoot
+    restart: unless-stopped
+    networks:
+     - spiderfoot_local
+    ports:
+     - "8080:9100"
+    image: "jscoupreman/spiderfoot"
