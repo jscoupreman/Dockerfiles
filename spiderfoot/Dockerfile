@@ -57,8 +57,8 @@ RUN sed -i 's/dl-cdn/dl-2/g' /etc/apk/repositories && \
     rm -rf /var/cache/apk/*
 #
 # Healthcheck
-HEALTHCHECK --retries=10 CMD curl -s -XGET 'http://127.0.0.1:8080'
-#HEALTHCHECK --retries=10 CMD curl -s -XGET 'http://127.0.0.1:8080/spiderfoot/'
+#HEALTHCHECK --retries=10 CMD curl -s -XGET 'http://127.0.0.1:8080'
+HEALTHCHECK --retries=10 CMD curl -s -XGET 'http://127.0.0.1:8080/spiderfoot/'
 #
 # Set user, workdir and start spiderfoot
 USER spiderfoot:spiderfoot
