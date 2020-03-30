@@ -12,7 +12,7 @@ services:
             - DB_PASS=yourdbpass
             - DB_DATABASE=bookstackapp
         volumes:
-            - /data/bootstack:/config
+            - /data/bootstack/bookstack:/config
         ports:
             - 6875:6875
         restart: unless-stopped
@@ -25,10 +25,10 @@ services:
             - PUID=1000
             - PGID=1000
             - MYSQL_ROOT_PASSWORD=yourdbpass
-            - TZ=Europe/London
+            - TZ=Europe/Brussels
             - MYSQL_DATABASE=bookstackapp
             - MYSQL_USER=bookstack
             - MYSQL_PASSWORD=yourdbpass
         volumes:
-            - /path/to/data:/config
+            - /data/bookstack/bookstack_db:/config
         restart: unless-stopped
