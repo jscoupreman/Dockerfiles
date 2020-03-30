@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  spiderfoot:
+    build: .
+    container_name: minecraft_project-ozone-3
+    restart: unless-stopped
+    ports:
+     - "25575:25575"
+    image: "jscoupreman/minecraft_project-ozone-3"
