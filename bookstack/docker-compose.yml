@@ -12,7 +12,7 @@ services:
             - DB_PASS=yourdbpass
             - DB_DATABASE=bookstackapp
         volumes:
-            - /path/to/data:/config
+            - /data/bootstack:/config
         ports:
             - 6875:6875
         restart: unless-stopped
