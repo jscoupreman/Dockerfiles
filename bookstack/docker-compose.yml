@@ -1,34 +1,36 @@
----
-version: "2"
 services:
     bookstack:
-        image: linuxserver/bookstack
-        container_name: bookstack
-        environment:
-            - PUID=1000
-            - PGID=1000
-            - DB_HOST=bookstack_db
-            - DB_USER=bookstack
-            - DB_PASS=yourdbpass
-            - DB_DATABASE=bookstackapp
-        volumes:
-            - /data/bootstack/bookstack:/config
-        ports:
-            - 6875:6875
-        restart: unless-stopped
-        depends_on:
-            - bookstack_db
+      image: linuxserver/bookstack
+      container_name: bookstack
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - DB_HOST=bookstack_db
+        - DB_USER=bookstack
+        - DB_PASS=REDACTED
+        - DB_DATABASE=bookstackapp
+        - APP_URL=https://not.real.com
+      volumes:
+        - /data/bookstack/bookstack_config:/config
+      ports:
+        - 6875:6875
+      restart: unless-stopped
+      depends_on:
+        - bookstack_db
     bookstack_db:
-        image: linuxserver/mariadb
-        container_name: bookstack_db
-        environment:
-            - PUID=1000
-            - PGID=1000
-            - MYSQL_ROOT_PASSWORD=yourdbpass
-            - TZ=Europe/Brussels
-            - MYSQL_DATABASE=bookstackapp
-            - MYSQL_USER=bookstack
-            - MYSQL_PASSWORD=yourdbpass
-        volumes:
-            - /data/bookstack/bookstack_db:/config
-        restart: unless-stopped
+      image: linuxserver/mariadb
+      container_name: bookstack_db
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - MYSQL_ROOT_PASSWORD=REDACTED
+        - TZ=Europe/Brussels
+        - MYSQL_DATABASE=bookstackapp
+        - MYSQL_USER=bookstack
+        - MYSQL_PASSWORD=REDACTED
+      volumes:
+        - /data/bookstack/bookstack_db:/config
+      restart: unless-stopped
+volumes:
+    bookstack_db:
+    bookstack_config:
